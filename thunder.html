@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rainforest Thunderstorm</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color:#121212; /* Rainforest green */
+      overflow: hidden;
+    }
+
+    /* Background Sky and Clouds */
+    .sky {
+      position: absolute;
+      bottom: 0;
+      left: 10;
+      width: 100%;
+      height:50%;
+      background: lightblue; /* Greenish sky */
+    }
+
+    .clouds {;
+      position: absolute;
+      top: 0%;
+      left: 0;
+      width: 60%;
+      height: 40%;
+      background: strongblack(50, 50, 50, 0.8); /* Dark clouds */
+      animation: cloudMovement 5s linear infinite;
+    }
+
+    .clouds:after {
+      content: '';
+      position: absolute;
+      top: 20%;
+      left: 60%;
+      width: 70%;
+      height: 60%;
+      background: rgba(60, 60, 60, 0.9);
+      border-radius: 50%;
+      animation: cloudMovement 15s linear infinite;
+    }
+
+    @keyframes cloudMovement {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    /* Heavy Rain */
+    .rain {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .raindrop {
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.6);
+      width: 2px;
+      height: 20px;
+      animation: rainFall 0.4s  infinite;
+      opacity: 0.7;
+    }
+
+    .raindrop:nth-child(odd) {
+      animation-duration: 0.4s;
+    }
+
+    .raindrop:nth-child(even) {
+      animation-duration: 0.6s;
+    }
+
+    @keyframes rainFall {
+      to {
+        transform: translateY(100vh);
+      }
+    }
+
+    /* Lightning (Zig-Zag Effect) */
+    .lightning {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      width: 3px;
+      height: 100%;
+      background: #fff;
+      opacity: 0;
+      animation: lightningFlash 3s infinite;
+    }
+
+    @keyframes lightningFlash {
+      0% { opacity: 0; }
+      30% { opacity: 1; transform: translateX(-5px); }
+      60% { opacity: 0; transform: translateX(5px); }
+      100% { opacity: 0; }
+    }
+
+    /* Trees */
+    .tree {
+      position: absolute;
+      bottom: 10%;
+      left: 10%;
+      width: 100px;
+      height: 200px;
+      background: #5E8A5B;
+      border-radius: 15px;
+    }
+
+    .tree:after {
+      content: '';
+      position: absolute;
+      top: -50px;
+      left: 15px;
+      width: 70px;
+      height: 100px;
+      background: #3A6B45;
+      border-radius: 50%;
+    }
+
+    /* Village Houses */
+    .house {
+      position: absolute;
+      bottom: 20%;
+      left: 60%;
+      width: 100px;
+      height: 80px;
+      background: #8B5A2B;
+      border-radius: 10px;
+      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .roof {
+      position: absolute;
+      top: -30px;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      background: #C98C1B;
+      clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+    }
+
+    /* Animals under trees (simplified) */
+    .animal {
+      position: absolute;
+      bottom: 40px;
+      left: 25%;
+      width: 15px;
+      height: 15px;
+      background: #C8C8C8;
+      border-radius: 50%;
+    }
+
+    .animal2 {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      width: 15px;
+      height: 15px;
+      background: #B8B8B8;
+      border-radius: 50%;
+    }
+
+    /* Add Rain */
+    .raindrops {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Raindrops animation */
+    .raindrops .raindrop:nth-child(odd) {
+      animation-duration: 0.5s;
+    }
+
+    .raindrops .raindrop:nth-child(even) {
+      animation-duration: 0.7s;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="sky">
+    <!-- Clouds -->
+    <div class="clouds"></div>
+
+    <!-- Lightning -->
+    <div class="lightning"></div>
+
+    <!-- Rain -->
+    <div class="rain">
+      <div class="raindrops">
+        <div class="raindrop" style="left: 5%; animation-delay: 0s;"></div>
+        <div class="raindrop" style="left: 15%; animation-delay: 0.1s;"></div>
+        <div class="raindrop" style="left: 25%; animation-delay: 0.2s;"></div>
+        <div class="raindrop" style="left: 35%; animation-delay: 0.3s;"></div>
+        <div class="raindrop" style="left: 45%; animation-delay: 0.4s;"></div>
+        <div class="raindrop" style="left: 55%; animation-delay: 0.5s;"></div>
+        <div class="raindrop" style="left: 65%; animation-delay: 0.6s;"></div>
+        <div class="raindrop" style="left: 75%; animation-delay: 0.7s;"></div>
+        <div class="raindrop" style="left: 85%; animation-delay: 0.8s;"></div>
+      </div>
+    </div>
+
+    <!-- Trees -->
+    <div class="tree"></div>
+
+    <!-- Village Houses -->
+    <div class="house">
+      <div class="roof"></div>
+    </div>
+
+    <!-- Animals under trees -->
+    <div class="animal"></div>
+    <div class="animal2"></div>
+  </div>
+</body>
+</html>
+

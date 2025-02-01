@@ -1,0 +1,74 @@
+<DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dragon Roaring Animation</title>
+  <style>
+    /* Keyframes for dragon roar animation */
+    @keyframes roar {
+      0% { transform: scale(1); color: rgb(255, 0, 0); }
+      25% { transform: scale(1.2); color: rgb(255, 165, 0); }
+      50% { transform: scale(1); color: rgb(0, 255, 0); }
+      75% { transform: scale(1.2); color: rgb(255, 255, 0); }
+      100% { transform: scale(1); color: rgb(255, 0, 0); }
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #1e1e1e;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    .dragon-text {
+      font-size: 3rem;
+      font-weight: bold;
+      animation: roar 1s infinite;
+      text-align: center;
+    }
+
+    /* Optional: Add some shaking effect */
+    .shake {
+      animation: shake 0.5s ease-in-out infinite;
+    }
+
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-10px); }
+      50% { transform: translateX(10px); }
+      75% { transform: translateX(-10px); }
+      100% { transform: translateX(0); }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="dragon-text shake">
+    🐉 Roar! 🐉
+  </div>
+
+  <!-- Optional: Add Roar Sound -->
+  <audio id="roarSound" src="https://www.soundjay.com/button/beep-07.wav" preload="auto"></audio>
+
+  <script>
+    // Play sound every time the dragon roars (animation step)
+    const roarSound = document.getElementById("roarSound");
+
+    function playRoarSound() {
+      roarSound.play();
+    }
+
+    // Trigger the sound on animation start
+    document.querySelector('.dragon-text').addEventListener('animationiteration', playRoarSound);
+  </script>
+  
+</body>
+</html>
+
